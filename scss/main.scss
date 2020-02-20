@@ -1,0 +1,99 @@
+$contentmarginklein: 10px;
+$contentmargingroot: 75px;
+
+//bootstrap snap
+$xs: 0;
+$sm: 480px;
+$md: 768px;
+$lg: 1024px;
+
+//nav
+header {
+  padding: 50px;
+
+  background-image: url("../img/headerfoto.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+}
+
+.navbar {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: darkblue;
+  font-size: medium;
+  left: 75px;
+  position: static;
+  margin-right: 15px;
+  font-size: 17px;
+}
+
+nav.navbar {
+  padding-left: 0px;
+}
+
+ul.navbar-nav {
+  margin-left: $contentmargingroot;
+}
+
+//content
+
+@media only screen and (min-width: $md) {
+  .content {
+    margin-left: $contentmargingroot;
+    margin-right: $contentmargingroot;
+  }
+}
+
+@media only screen and (min-width: $xs) and (max-width: $md) {
+  .content {
+    margin-left: $contentmarginklein;
+    margin-right: $contentmarginklein;
+  }
+}
+
+.navbar-toggler {
+  margin-left: $contentmarginklein;
+}
+
+.content {
+  background-color: whitesmoke;
+}
+
+//home
+.hometext {
+  margin-top: 20px;
+  font-weight: 400;
+}
+
+div.homecards {
+  margin-left: 10px;
+  margin-right: 10px;
+
+  max-width: 1000px;
+  height: auto;
+  margin: 0 auto;
+
+  margin-top: 75px;
+
+  justify-content: space-between;
+}
+
+
+
+img.card-img-top {
+  max-height: 250px;
+  width: auto;
+  object-fit: cover;
+}
+
+div.col-4 {
+
+}
