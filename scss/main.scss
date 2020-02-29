@@ -44,15 +44,15 @@ ul.navbar-nav {
 }
 
 //content
-
-@media only screen and (min-width: $md) {
+  //groter dan large
+@media only screen and (min-width:   $lg) {
   .content {
     margin-left: $contentmargingroot;
     margin-right: $contentmargingroot;
   }
 }
-
-@media only screen and (min-width: $xs) and (max-width: $md) {
+  //schermen kleiner dan large
+@media only screen and (min-width: $xs) and (max-width: $lg) {
   .content {
     margin-left: $contentmarginklein;
     margin-right: $contentmarginklein;
@@ -94,6 +94,6 @@ img.card-img-top {
   object-fit: cover;
 }
 
-div.col-4 {
-
+div.card {
+  min-width: 30%;
 }

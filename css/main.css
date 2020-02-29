@@ -31,13 +31,13 @@ ul.navbar-nav {
   margin-left: 75px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1024px) {
   .content {
     margin-left: 75px;
     margin-right: 75px;
   }
 }
-@media only screen and (min-width: 0) and (max-width: 768px) {
+@media only screen and (min-width: 0) and (max-width: 1024px) {
   .content {
     margin-left: 10px;
     margin-right: 10px;
@@ -70,6 +70,10 @@ img.card-img-top {
   max-height: 250px;
   width: auto;
   object-fit: cover;
+}
+
+div.card {
+  min-width: 30%;
 }
 
 /*# sourceMappingURL=main.css.map */

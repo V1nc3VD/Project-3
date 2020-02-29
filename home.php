@@ -16,13 +16,13 @@
 
             </div>
         </div>
-        <div class="card col-12 offset-md-1 col-md-3">
+        <div class="card col-12 col-md-3">
             <img class="card-img-top" src="./img/dummy2" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">Informatie</h5>
             </div>
         </div>
-        <div class="card col-12 offset-md-1 col-md-3">
+        <div class="card col-12 col-md-3">
             <img class="card-img-top" src="./img/dummy3" alt="Card image cap">
             <div class="card-body">Basic card</div>
             <a href="#" class="btn btn-primary" onclick="dyslexiemodus()">Button</a>
