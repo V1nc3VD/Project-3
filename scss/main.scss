@@ -1,15 +1,27 @@
 $contentmarginklein: 10px;
 $contentmargingroot: 75px;
 
+$contentwidth: 1100px;
+$contentafstand: 10px;
 //bootstrap snap
 $xs: 0;
 $sm: 480px;
 $md: 768px;
-$lg: 1024px;
+$lg: 1024px; //gebruik contentwidth ipv lg
 
-//nav
+//header
+
+.inloggenheader {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  float: right;
+
+  margin-right: 10px;
+}
+
 header {
-  padding: 50px;
+  height: 100px;
 
   background-image: url("../img/headerfoto.png");
   background-repeat: no-repeat;
@@ -18,6 +30,8 @@ header {
   background-color: #8ec5fc;
   background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
 }
+
+//nav
 
 .navbar {
   margin-top: 8px;
@@ -29,42 +43,39 @@ header {
 .navbar-light .navbar-nav .nav-link {
   color: darkblue;
   font-size: medium;
-  left: 75px;
-  position: static;
+
   margin-right: 15px;
   font-size: 17px;
 }
 
+//grootste div van de navigatiebalk
 nav.navbar {
-  padding-left: 0px;
-}
-
-ul.navbar-nav {
-  margin-left: $contentmargingroot;
+  padding-left: 10px;
 }
 
 //content
-  //groter dan large
-@media only screen and (min-width:   $lg) {
+//groter dan large
+@media only screen and (min-width: $contentwidth) {
   .content {
-    margin-left: $contentmargingroot;
-    margin-right: $contentmargingroot;
+    width: $contentwidth;
+    margin: 0 auto;
+  }
+  ul.navbar-nav {
+    margin: 0 auto;
+    width: $contentwidth;
   }
 }
-  //schermen kleiner dan large
-@media only screen and (min-width: $xs) and (max-width: $lg) {
+//schermen kleiner dan large
+@media only screen and (min-width: $xs) and (max-width: $contentwidth) {
   .content {
     margin-left: $contentmarginklein;
     margin-right: $contentmarginklein;
   }
 }
 
-.navbar-toggler {
-  margin-left: $contentmarginklein;
-}
-
 .content {
   background-color: whitesmoke;
+  padding: $contentafstand;
 }
 
 //home
@@ -85,8 +96,6 @@ div.homecards {
 
   justify-content: space-between;
 }
-
-
 
 img.card-img-top {
   max-height: 250px;
