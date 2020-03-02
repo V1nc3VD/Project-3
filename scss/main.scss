@@ -9,7 +9,7 @@ $sm: 480px;
 $md: 768px;
 $lg: 1024px; //gebruik contentwidth ipv lg
 
-//header
+//header//
 
 .inloggenheader {
   position: relative;
@@ -18,10 +18,11 @@ $lg: 1024px; //gebruik contentwidth ipv lg
   float: right;
 
   margin-right: 10px;
+}
 
-  
-
-
+img.profielklein {
+  width: 25px;
+  height: 25px;
 }
 
 header {
@@ -44,26 +45,9 @@ header {
   background-repeat: no-repeat;
 
   background-size: auto 100%;
-  @media only screen and (min-width: $md) {
-    height: 75%;
-    width: 450px;
-    background-image: url(/img/logo_dummy.png);
-  }
-
-  @media only screen and (max-width: $md) {
-    height: 75%;
-    width: 200px;
-    background-image: url(/img/logo_dummyklein.png);
-    margin-left: 10px;
-  }
 }
 
-img.profielklein {
-  width: 25px;
-  height: 25px;
-}
-
-//nav
+//nav//
 
 .navbar {
   margin-top: 8px;
@@ -83,34 +67,18 @@ img.profielklein {
 //grootste div van de navigatiebalk
 nav.navbar {
   padding-left: 10px;
+  overflow: hidden; //is er zodat de navbar niet om een of andere reden buiten de body gaat bij 1101px
 }
 
 //content
 //groter dan large
-@media only screen and (min-width: $contentwidth) {
-  .content {
-    width: $contentwidth;
-    margin: 0 auto;
-  }
-  ul.navbar-nav {
-    margin: 0 auto;
-    width: $contentwidth;
-  }
-}
-//schermen kleiner dan large
-@media only screen and (min-width: $xs) and (max-width: $contentwidth) {
-  .content {
-    margin-left: $contentmarginklein;
-    margin-right: $contentmarginklein;
-  }
-}
 
 .content {
   background-color: whitesmoke;
   padding: $contentafstand;
 }
 
-//home
+//homepagina//
 .hometext {
   margin-top: 20px;
   font-weight: 400;
@@ -139,4 +107,47 @@ div.card {
   min-width: 30%;
 }
 
+@media only screen and (max-width: $md) {
+  //header
+  .logo {
+    height: 75%;
+    width: 200px;
+    background-image: url(/img/logo_dummyklein.png);
+    margin-left: 10px;
+  }
+  .inloggenregistreren {
+    display: none;
+  }
+}
+@media only screen and (min-width: $md+1px) {
+  //header
+  .logo {
+    height: 75%;
+    width: 450px;
+    background-image: url(/img/logo_dummy.png);
+  }
+  .profielklein {
+    display: none;
+  }
+}
 
+@media only screen and (min-width: $sm) and (max-width: $contentwidth+$contentmarginklein) {
+  //content
+  .content {
+    margin-left: $contentmarginklein;
+    margin-right: $contentmarginklein;
+    
+  }
+}
+
+@media only screen and (min-width: $contentwidth+$contentmarginklein+1px) {
+  .content {
+    width: $contentwidth;
+    margin: 0 auto;
+  }
+  ul.navbar-nav {
+    margin: 0 auto;
+    width: $contentwidth;
+
+  }
+}
