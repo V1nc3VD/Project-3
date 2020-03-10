@@ -119,5 +119,8 @@ div.card {
     width: 1100px;
   }
 }
+div.content {
+  font-family: Arial;
+}
 
 /*# sourceMappingURL=main.css.map */
