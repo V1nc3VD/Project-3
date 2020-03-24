@@ -1,9 +1,12 @@
+
+    
 <h2 class="text-center">
-    Welkom op onze website over dyslexie!
+    Welkom op dyslexie startpunt
 </h2>
 
 <h3 class="hometext">
-    Hier kan u informatie vinden over dyslexie. Ook kan je hier een korte dyslexie test doen en een leuke game over dyslexie spelen!
+Dyslexie is de meest voorkomende en meest onderzochte leerstoornis. Ongeveer 4% van de Nederlandse bevolking heeft hier last van. Deze website is een overzichtelijke plaats 
+    voor mensen met dyslexie of mensen die er meer over te weten willen komen.
 </h3>
 
 <div class="container-fluid">

@@ -13,7 +13,7 @@
     <title>Dyslexie</title>
   </head>
   <body>
-  <?php include("./header.html"); ?>
+  <?php include("./header.php"); ?>
     <?php include("./navbar.html"); ?>
     <div class="content">
         <?php
