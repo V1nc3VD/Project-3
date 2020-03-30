@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($email_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT id, email, password FROM register WHERE email = ?";
+        $sql = "SELECT USER_ID, email, nickname, password FROM register WHERE email = ?";
         
         if($stmt = mysqli_prepare($conn, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -45,6 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Set parameters
             $param_email = $email;
+
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -54,18 +55,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Check if email exists, if yes then verify password
                 if(mysqli_stmt_num_rows($stmt) == 1){                    
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $email, $hashed_password);
+                    mysqli_stmt_bind_result($stmt, $id, $email, $username, $hashed_password);
                     if(mysqli_stmt_fetch($stmt)){
                         if(password_verify($password, $hashed_password)){
                             // Password is correct, so start a new session
                             session_start();
                             
                             // Store data in session variables
-                            $username =
                             $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
+                            $_SESSION["USER_ID"] = $id;
                             $_SESSION["email"] = $email;   
-                            $_SESSION["username"] = $sql;                       
+                            $_SESSION["username"] = $username; 
+             
                             
                             // Redirect user to welcome page
                             header("location:  ./index.php?content=home");

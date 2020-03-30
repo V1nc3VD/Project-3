@@ -13,7 +13,10 @@
        
             }
             else {
-                print($_SESSION["username"]);
+                print('Welkom, ' . $_SESSION["username"] .
+                '<a href="./logout.php" class="btn btn-primary btn-lg " role="button" aria-disabled="true">Uitloggen</a>
+                '
+            );
             }
             
             ?>
