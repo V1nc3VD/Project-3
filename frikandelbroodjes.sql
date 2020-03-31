@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 30 mrt 2020 om 12:08
--- Serverversie: 5.7.26
--- PHP-versie: 7.2.18
+-- Gegenereerd op: 31 mrt 2020 om 18:25
+-- Serverversie: 10.4.10-MariaDB
+-- PHP-versie: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,10 +31,21 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `berichten`;
 CREATE TABLE IF NOT EXISTS `berichten` (
   `MESSAGE_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `USER_ID` int(11) NOT NULL,
+  `USER_ID` int(11) DEFAULT NULL,
+  `CONTACTEMAIL` varchar(30) NOT NULL,
   `MESSAGE` varchar(500) NOT NULL,
   PRIMARY KEY (`MESSAGE_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `berichten`
+--
+
+INSERT INTO `berichten` (`MESSAGE_ID`, `USER_ID`, `CONTACTEMAIL`, `MESSAGE`) VALUES
+(20, 34, '', 'ik ben geen gast en heb geen email ingevoerd'),
+(22, NULL, 'vincevandoorn@gmail.com', 'hallo ik kan niet meer inloggen!!'),
+(21, NULL, 'henkbakvet@gmail.com', 'ik ben een gast zonder account'),
+(19, 34, 'ikbengeengast@hank.com', 'ik ben geen gast en heb een andere email ingevoerd');
 
 -- --------------------------------------------------------
 
@@ -50,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `register` (
   `password` varchar(60) NOT NULL,
   `userrole` enum('root','admin','moderator','gebruiker') NOT NULL,
   PRIMARY KEY (`USER_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `register`
@@ -64,7 +75,8 @@ INSERT INTO `register` (`USER_ID`, `email`, `nickname`, `password`, `userrole`) 
 (29, 'hacker2@gmail.com', 'hank', '$2y$10$lpH3fGtOCaXH7oheCpnWRO0T72HyiWp8z5hJzq/9weVBpEvDKffKi', 'gebruiker'),
 (30, 'newschoolmassa@gmail.com', 'Dinojëager', '$2y$10$1Pm4fPEgcxiEn5ymxUhy7OeDgQU4wa2FFnzB2Xr2NnxO4OvSqK./q', 'admin'),
 (33, 'belgischehacker@gmail.com', 'belg', '$2y$10$8luxTaoVxBKrQSN3rYndkuFoGQxrklxlqrf2VKNEEdk3JF0LJ/sju', 'gebruiker'),
-(32, 'vincevandoorn2@gmail.com', 'hank', '$2y$10$m5/O6jmJ5u10g1YGqtkGJuTCTySnvKkARpK7G2lrtj/nWSjA4j3Da', 'gebruiker');
+(32, 'vincevandoorn2@gmail.com', 'hank', '$2y$10$m5/O6jmJ5u10g1YGqtkGJuTCTySnvKkARpK7G2lrtj/nWSjA4j3Da', 'gebruiker'),
+(34, 'henkbakvet@gmail.com', 'Hank', '$2y$10$HTLqEM4BkXq/LEYMXDXfw.eZek7ilak2.bd6Qt5zc3wGVlojdxgse', 'gebruiker');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
