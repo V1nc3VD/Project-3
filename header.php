@@ -2,26 +2,37 @@
     <div class="logo"></div>
 
     <div class="inloggenheader">
-        <div class="inloggenregistreren">   <!--Moet weg zijn bij kleine schermgrootte en/of wanneer je hebt ingelogd-->
-          
-          <?php 
-          session_start();
+        <div class="inloggenregistreren">
+            <!--Moet weg zijn bij kleine schermgrootte en/of wanneer je hebt ingelogd-->
 
-          if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+            <?php
+            session_start();
 
-            include("header_loginregister_button.php");
-       
+            if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+
+                include("header_loginregister_button.php");
+            } else {
+                print(
+                    '<div class="dropdown">                    
+                    <a href="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . 
+                    'Welkom, ' . $_SESSION["username"] .    
+                    '<img src="./img/dropdownicon.png" alt="">' .
+                        
+                    '</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
+                
+                ');
             }
-            else {
-                print('Welkom, ' . $_SESSION["username"] .
-                '<a href="./logout.php" class="btn btn-primary btn-lg " role="button" aria-disabled="true">Uitloggen</a>
-                '
-            );
-            }
-            
+
             ?>
-        
-        </div>  <!--zie je ipv inloggenenregistreren wanneer je bent ingelogd, bij kleine schermgrootte zie je dit ook zonder ingelogd te zijn en krijg je een inlogscherm-->
+
+        </div>
+        <!--zie je ipv inloggenenregistreren wanneer je bent ingelogd, bij kleine schermgrootte zie je dit ook zonder ingelogd te zijn en krijg je een inlogscherm-->
         <button type="button" class="btn btn-light profielklein ">
             <img src="./img/icon.png" alt="profiel" class="profielklein">
         </button>
