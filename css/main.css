@@ -17,6 +17,8 @@ img.profielklein {
 
 header {
   height: 100px;
+  z-index: 1010;
+  position: relative;
   background-image: url("../img/headerfoto.png");
   background-repeat: no-repeat;
   background-size: cover;

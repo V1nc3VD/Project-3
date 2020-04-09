@@ -5,7 +5,7 @@
                 <p><b>Heeft u vragen, voel je dan vrij om hier een bericht achter te laten. We streven ernaar om binnen 24 uur een antwoord te geven.</b></p>
                 <form action="./index.php?content=contact_script" method="post">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email 
+                        <label for="exampleInputEmail1">Email</label> 
                         <?php
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true)
 {

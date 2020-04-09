@@ -14,13 +14,13 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 require_once "connect_db.php";
  
 // Define variables and initialize with empty values
-$email = $password = "";
+$email = $password = $userrole = "";
 $email_err = $password_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-    // Check if username EMAIL is empty
+    // Check if EMAIL is empty
     if(empty(trim($_POST["email"]))){
         $email_err = "Vul je email in.";
     } else{
@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($email_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT USER_ID, email, nickname, password FROM register WHERE email = ?";
+        $sql = "SELECT USER_ID, email, nickname, password, userrole FROM register WHERE email = ?";
         
         if($stmt = mysqli_prepare($conn, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Check if email exists, if yes then verify password
                 if(mysqli_stmt_num_rows($stmt) == 1){                    
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $email, $username, $hashed_password);
+                    mysqli_stmt_bind_result($stmt, $id, $email, $username, $hashed_password, $userrole);
                     if(mysqli_stmt_fetch($stmt)){
                         if(password_verify($password, $hashed_password)){
                             // Password is correct, so start a new session
@@ -66,6 +66,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["USER_ID"] = $id;
                             $_SESSION["email"] = $email;   
                             $_SESSION["username"] = $username; 
+                            $_SESSION["userrole"] = $userrole; 
              
                             
                             // Redirect user to welcome page
@@ -91,7 +92,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     }
     print("$email_err, $password_err");
-        exit;
+        
+        $_SESSION["isstaff"] = false;
+        if ($userrole == "admin" || $userrole == "moderator" || $userrole == "superadmin" || $userrole == "root" || $userrole == "helper") {
+            $_SESSION["isstaff"] = true;
+
+    }
+    exit;
     
     // Close connection
     mysqli_close($conn);
