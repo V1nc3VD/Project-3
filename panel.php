@@ -5,8 +5,30 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION[
 include("./phpscripts/connect_db.php");
  $tbody = "";
  
- 
- $sql = "SELECT * FROM `berichten`";
+ // Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
+//gebruiker ziet maximaal $maxrecords per pagina 
+if (isset($_GET['pageno'])) {
+  $pageno = $_GET['pageno'];
+} else {
+  $pageno = 1;
+}
+$maxrecords = 10;
+//zorgt dat bij volgende pagina's er een "offset" is dus het skipt $offset aantal dingen daarvoor
+//waardoor je op elke pagina nieuwe records ziet
+$offset = ($pageno-1) * $maxrecords; 
+
+
+$total_pages_sql = "SELECT COUNT(*) FROM berichten";
+$result = mysqli_query($conn,$total_pages_sql);
+$total_rows = mysqli_fetch_array($result)[0];
+$total_pages = ceil($total_rows / $maxrecords);
+
+
+ $sql = "SELECT * FROM `berichten` ORDER BY MESSAGE_ID limit $maxrecords offset $offset";
  $result = mysqli_query($conn, $sql);
  
  while ($record = mysqli_fetch_assoc($result)) {
@@ -31,6 +53,10 @@ include("./phpscripts/connect_db.php");
  
  //  echo "<pre>" . var_dump($tbody) . "</pre>";
  // echo $username;
+ 
+mysqli_close($conn);
+
+
  ?>
  
  
@@ -48,5 +74,15 @@ include("./phpscripts/connect_db.php");
      <?php echo $tbody; ?>
    </tbody>
  </table>
- 
- 
+
+
+
+  <ul class="pagination justify-content-center">
+    <li class="page-item"><a class="page-link" href="<?php if($pageno <= 1){ echo '#'; } else { echo "index.php?content=panel&pageno=1"; }?>"><<</a></li>
+    <li class="page-item"><a class="page-link" href="<?php if($pageno <= 1){ echo '#'; } else { echo "index.php?content=panel&pageno=".($pageno - 1); } ?>"><</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "index.php?content=panel&pageno=".($pageno + 1); } ?>">></a></li>
+    <li class="page-item"><a class="page-link" href="index.php?content=panel&pageno=<?php echo $total_pages; ?>">>></a></li>
+  </ul>
