@@ -3,7 +3,7 @@
         <div class="col-md-8 registreerform">
             <h3 class="registreren text-center">Registreren</h2>
             <hr>
-            <form action="./index.php?content=register_script" method="post">
+            <form action="./phpscripts/register_script" method="post">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Je email address</label>
                     <input type="email" class="form-control registreerinput" id="email" name="email" aria-describedby="email" placeholder="">

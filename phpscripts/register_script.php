@@ -16,8 +16,8 @@ else if (empty($_POST["password"])) {
 
 else {
 
-    include("connect_db.php");
-    include("functions.php");
+    include("./connect_db.php");
+    include("./functions.php");
     $email = sanitize($_POST["email"]);
     $password = sanitize($_POST["password"]);
     $passwordverify = sanitize($_POST["password-verify"]);

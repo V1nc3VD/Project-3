@@ -3,7 +3,7 @@
             <h3 class="registreren text-center">Contact</h2>
                 <hr>
                 <p><b>Heeft u vragen, voel je dan vrij om hier een bericht achter te laten. We streven ernaar om binnen 24 uur een antwoord te geven.</b></p>
-                <form action="./index.php?content=contact_script" method="post">
+                <form action="./phpscripts/contact_script" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label> 
                         <?php

@@ -2,7 +2,7 @@
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION["isstaff"] !== true){
     header("location: ./index.php?content=inloggen");
 }
-include("./connect_db.php");
+include("./phpscripts/connect_db.php");
  $tbody = "";
  
  
@@ -48,3 +48,5 @@ include("./connect_db.php");
      <?php echo $tbody; ?>
    </tbody>
  </table>
+ 
+ 

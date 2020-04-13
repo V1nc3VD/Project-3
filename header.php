@@ -28,7 +28,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="./index.php?content=panel">Profiel en berichten</a>'
                         . $berichtentekst .
-                        '<a class="dropdown-item" href="./index.php?content=logout">Uitloggen</a>
+                        '<a class="dropdown-item" href="./phpscripts/logout.php">Uitloggen</a>
                         <hr>
                         <b class="ml-3">rol: ' . $_SESSION["userrole"] . '</b>
                         

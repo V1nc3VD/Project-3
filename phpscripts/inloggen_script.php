@@ -1,17 +1,17 @@
 <?php
 // Initialize the session
 //include("connect_db.php");
-include("functions.php");
+include("./functions.php");
 
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: ./index.php?content=home");
+    header("location: ../index.php?content=home");
     exit;
 }
  
 // Include config file
-require_once "connect_db.php";
+require_once "./connect_db.php";
  
 // Define variables and initialize with empty values
 $email = $password = $userrole = "";
@@ -70,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
              
                             
                             // Redirect user to welcome page
-                            header("location:  ./index.php?content=home");
+                            header("location:  ../index.php?content=home");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
